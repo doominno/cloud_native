@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: mern-backend
 spec:
-  replicas: 1
+  replicas: {{ .Values.backend.replicas }}
   selector:
     matchLabels:
       app: mern-backend

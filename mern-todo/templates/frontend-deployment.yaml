@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: mern-frontend
 spec:
-  replicas: 1
+  replicas: {{ .Values.frontend.replicas }}
   selector:
     matchLabels:
       app: mern-frontend
@@ -17,3 +17,6 @@ spec:
           image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
           ports:
             - containerPort: {{ .Values.frontend.containerPort }}
+          env:
+            - name: REACT_APP_BACKEND_URL
+              value: {{ .Values.frontend.env.REACT_APP_BACKEND_URL | quote }}

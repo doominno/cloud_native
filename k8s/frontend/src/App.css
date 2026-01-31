@@ -23,6 +23,15 @@ h1 {
   color: #2c3e50;
 }
 
+.error-msg {
+  color: #c0392b;
+  background: #fdeaea;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
 .input-group {
   display: flex;
   gap: 10px;

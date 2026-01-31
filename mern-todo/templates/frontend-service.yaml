@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: mern-frontend
 spec:
-  type: NodePort
+  type: {{ .Values.frontend.service.type }}
   selector:
     app: mern-frontend
   ports:
-    - port: 80
-      targetPort: 80
-      nodePort: 30080
+    - port: {{ .Values.frontend.service.port }}
+      nodePort: {{ .Values.frontend.service.nodePort }}
+      targetPort: {{ .Values.frontend.containerPort }}

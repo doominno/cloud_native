@@ -1,11 +1,17 @@
-const express = require('express');
+import express from 'express';
+import Todo from '../models/Todo.js';
+
 const router = express.Router();
-const Todo = require('../models/Todo');
 
 // GET all todos
 router.get('/', async (req, res) => {
-  const todos = await Todo.find();
-  res.json(todos);
+  try {
+    const todos = await Todo.find();
+    res.json(todos);
+  } catch (err) {
+    console.error('Error al listar todos:', err);
+    res.status(503).json({ error: 'Servicio no disponible. Revisa la conexión a la base de datos.' });
+  }
 });
 
 // POST new todo
@@ -43,4 +49,4 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
-module.exports = router;
+export default router;
