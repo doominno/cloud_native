@@ -1,0 +1,14 @@
+# backend-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mern-backend
+  namespace: production
+spec:
+  selector:
+    app: mern-backend
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+  type: ClusterIP
